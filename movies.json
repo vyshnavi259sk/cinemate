@@ -1,0 +1,982 @@
+[
+  {
+    "id": 550,
+    "title": "Fight Club",
+    "director": "David Fincher",
+    "genre": "Drama",
+    "year": 1999,
+    "rating": 8.4,
+    "overview": "An insomniac office worker forms an underground fight club.",
+    "cast": "Brad Pitt, Edward Norton"
+  },
+  {
+    "id": 13,
+    "title": "Forrest Gump",
+    "director": "Robert Zemeckis",
+    "genre": "Drama",
+    "year": 1994,
+    "rating": 8.8,
+    "overview": "Life is like a box of chocolates.",
+    "cast": "Tom Hanks, Robin Wright"
+  },
+  {
+    "id": 278,
+    "title": "The Shawshank Redemption",
+    "director": "Frank Darabont",
+    "genre": "Drama",
+    "year": 1994,
+    "rating": 9.3,
+    "overview": "Two imprisoned men bond over years, finding redemption.",
+    "cast": "Tim Robbins, Morgan Freeman"
+  },
+  {
+    "id": 238,
+    "title": "The Godfather",
+    "director": "Francis Ford Coppola",
+    "genre": "Crime",
+    "year": 1972,
+    "rating": 9.2,
+    "overview": "The aging patriarch of a crime dynasty transfers control to his son.",
+    "cast": "Marlon Brando, Al Pacino"
+  },
+  {
+    "id": 240,
+    "title": "The Godfather Part II",
+    "director": "Francis Ford Coppola",
+    "genre": "Crime",
+    "year": 1974,
+    "rating": 9.0,
+    "overview": "The early life of Vito Corleone and the life of his son Michael.",
+    "cast": "Al Pacino, Robert De Niro"
+  },
+  {
+    "id": 424,
+    "title": "Schindlers List",
+    "director": "Steven Spielberg",
+    "genre": "History",
+    "year": 1993,
+    "rating": 8.9,
+    "overview": "In German-occupied Poland, a businessman saves Jews from the Holocaust.",
+    "cast": "Liam Neeson, Ralph Fiennes"
+  },
+  {
+    "id": 389,
+    "title": "12 Angry Men",
+    "director": "Sidney Lumet",
+    "genre": "Drama",
+    "year": 1957,
+    "rating": 8.9,
+    "overview": "A jury holdout attempts to prevent a miscarriage of justice.",
+    "cast": "Henry Fonda, Lee J. Cobb"
+  },
+  {
+    "id": 129,
+    "title": "Spirited Away",
+    "director": "Hayao Miyazaki",
+    "genre": "Animation",
+    "year": 2001,
+    "rating": 8.6,
+    "overview": "A sullen girl wanders into a world ruled by gods and witches.",
+    "cast": "Daveigh Chase, Suzanne Pleshette"
+  },
+  {
+    "id": 19404,
+    "title": "Dilwale Dulhania Le Jayenge",
+    "director": "Aditya Chopra",
+    "genre": "Romance",
+    "year": 1995,
+    "rating": 8.1,
+    "overview": "A young man and woman fall in love on a trip through Europe.",
+    "cast": "Shah Rukh Khan, Kajol"
+  },
+  {
+    "id": 372058,
+    "title": "Your Name",
+    "director": "Makoto Shinkai",
+    "genre": "Animation",
+    "year": 2016,
+    "rating": 8.4,
+    "overview": "Two strangers find themselves linked in a bizarre way.",
+    "cast": "Ryunosuke Kamiki, Mone Kamishiraishi"
+  },
+  {
+    "id": 155,
+    "title": "The Dark Knight",
+    "director": "Christopher Nolan",
+    "genre": "Action",
+    "year": 2008,
+    "rating": 9.0,
+    "overview": "Batman raises the stakes in his war on crime with the Joker.",
+    "cast": "Christian Bale, Heath Ledger"
+  },
+  {
+    "id": 27205,
+    "title": "Inception",
+    "director": "Christopher Nolan",
+    "genre": "Sci-Fi",
+    "year": 2010,
+    "rating": 8.8,
+    "overview": "A thief who enters the dreams of others to steal secrets.",
+    "cast": "Leonardo DiCaprio, Joseph Gordon-Levitt"
+  },
+  {
+    "id": 157336,
+    "title": "Interstellar",
+    "director": "Christopher Nolan",
+    "genre": "Sci-Fi",
+    "year": 2014,
+    "rating": 8.6,
+    "overview": "A team of explorers travel through a wormhole in space.",
+    "cast": "Matthew McConaughey, Anne Hathaway"
+  },
+  {
+    "id": 497,
+    "title": "The Green Mile",
+    "director": "Frank Darabont",
+    "genre": "Fantasy",
+    "year": 1999,
+    "rating": 8.6,
+    "overview": "The lives of guards on Death Row are affected by a condemned prisoner.",
+    "cast": "Tom Hanks, Michael Clarke Duncan"
+  },
+  {
+    "id": 769,
+    "title": "GoodFellas",
+    "director": "Martin Scorsese",
+    "genre": "Crime",
+    "year": 1990,
+    "rating": 8.7,
+    "overview": "The story of Henry Hills rise and fall in the mob.",
+    "cast": "Ray Liotta, Robert De Niro"
+  },
+  {
+    "id": 244786,
+    "title": "Whiplash",
+    "director": "Damien Chazelle",
+    "genre": "Drama",
+    "year": 2014,
+    "rating": 8.5,
+    "overview": "A promising young drummer enrolls at a cutthroat music academy.",
+    "cast": "Miles Teller, J.K. Simmons"
+  },
+  {
+    "id": 314,
+    "title": "Eternal Sunshine of the Spotless Mind",
+    "director": "Michel Gondry",
+    "genre": "Romance",
+    "year": 2004,
+    "rating": 8.3,
+    "overview": "A couple undergo a procedure to erase each other from their memories.",
+    "cast": "Jim Carrey, Kate Winslet"
+  },
+  {
+    "id": 598,
+    "title": "City of God",
+    "director": "Fernando Meirelles",
+    "genre": "Crime",
+    "year": 2002,
+    "rating": 8.6,
+    "overview": "Two boys grow up in a dangerous neighborhood in Rio de Janeiro.",
+    "cast": "Alexandre Rodrigues, Leandro Firmino"
+  },
+  {
+    "id": 680,
+    "title": "Pulp Fiction",
+    "director": "Quentin Tarantino",
+    "genre": "Crime",
+    "year": 1994,
+    "rating": 8.9,
+    "overview": "The lives of two mob hitmen intertwine in four tales of violence.",
+    "cast": "John Travolta, Uma Thurman"
+  },
+  {
+    "id": 637,
+    "title": "Life is Beautiful",
+    "director": "Roberto Benigni",
+    "genre": "Drama",
+    "year": 1997,
+    "rating": 8.6,
+    "overview": "An Italian man uses humor to shield his son from the horrors of a Nazi camp.",
+    "cast": "Roberto Benigni, Nicoletta Braschi"
+  },
+  {
+    "id": 122,
+    "title": "The Lord of the Rings: The Return of the King",
+    "director": "Peter Jackson",
+    "genre": "Fantasy",
+    "year": 2003,
+    "rating": 9.0,
+    "overview": "Gandalf and Aragorn lead the World of Men against Sauron s army.",
+    "cast": "Elijah Wood, Viggo Mortensen"
+  },
+  {
+    "id": 4935,
+    "title": "Howls Moving Castle",
+    "director": "Hayao Miyazaki",
+    "genre": "Animation",
+    "year": 2004,
+    "rating": 8.2,
+    "overview": "A young hat-maker is turned into an old woman by a witch.",
+    "cast": "Chieko Baisho, Takuya Kimura"
+  },
+  {
+    "id": 11,
+    "title": "Star Wars: A New Hope",
+    "director": "George Lucas",
+    "genre": "Sci-Fi",
+    "year": 1977,
+    "rating": 8.6,
+    "overview": "Luke Skywalker joins rebels to rescue a princess and save the galaxy.",
+    "cast": "Mark Hamill, Harrison Ford"
+  },
+  {
+    "id": 1891,
+    "title": "The Empire Strikes Back",
+    "director": "Irvin Kershner",
+    "genre": "Sci-Fi",
+    "year": 1980,
+    "rating": 8.7,
+    "overview": "The Empire launches an all-out attack on the Rebel Alliance.",
+    "cast": "Mark Hamill, Harrison Ford"
+  },
+  {
+    "id": 76341,
+    "title": "Mad Max: Fury Road",
+    "director": "George Miller",
+    "genre": "Action",
+    "year": 2015,
+    "rating": 8.1,
+    "overview": "In a post-apocalyptic wasteland a woman rebels against a tyrant.",
+    "cast": "Tom Hardy, Charlize Theron"
+  },
+  {
+    "id": 8587,
+    "title": "The Lion King",
+    "director": "Roger Allers",
+    "genre": "Animation",
+    "year": 1994,
+    "rating": 8.5,
+    "overview": "A lion prince flees his kingdom only to return to take his place in the Circle of Life.",
+    "cast": "Matthew Broderick, Jeremy Irons"
+  },
+  {
+    "id": 862,
+    "title": "Toy Story",
+    "director": "John Lasseter",
+    "genre": "Animation",
+    "year": 1995,
+    "rating": 8.3,
+    "overview": "A cowboy doll is threatened by a new spaceman figure.",
+    "cast": "Tom Hanks, Tim Allen"
+  },
+  {
+    "id": 329,
+    "title": "The 400 Blows",
+    "director": "Francois Truffaut",
+    "genre": "Drama",
+    "year": 1959,
+    "rating": 8.1,
+    "overview": "A young boy in Paris faces a difficult home life and trouble at school.",
+    "cast": "Jean-Pierre Leaud, Albert Remy"
+  },
+  {
+    "id": 207,
+    "title": "Dead Poets Society",
+    "director": "Peter Weir",
+    "genre": "Drama",
+    "year": 1989,
+    "rating": 8.1,
+    "overview": "English teacher John Keating inspires his students to seize the day.",
+    "cast": "Robin Williams, Ethan Hawke"
+  },
+  {
+    "id": 539,
+    "title": "Psycho",
+    "director": "Alfred Hitchcock",
+    "genre": "Thriller",
+    "year": 1960,
+    "rating": 8.5,
+    "overview": "A secretary ends up at a creepy motel run by a disturbed young man.",
+    "cast": "Anthony Perkins, Janet Leigh"
+  },
+  {
+    "id": 74,
+    "title": "The Silence of the Lambs",
+    "director": "Jonathan Demme",
+    "genre": "Thriller",
+    "year": 1991,
+    "rating": 8.6,
+    "overview": "A young FBI cadet must confide in a killer to catch another killer.",
+    "cast": "Jodie Foster, Anthony Hopkins"
+  },
+  {
+    "id": 510,
+    "title": "One Flew Over the Cuckoos Nest",
+    "director": "Milos Forman",
+    "genre": "Drama",
+    "year": 1975,
+    "rating": 8.7,
+    "overview": "A criminal pleads insanity and is sent to a mental institution.",
+    "cast": "Jack Nicholson, Louise Fletcher"
+  },
+  {
+    "id": 4232,
+    "title": "Metropolis",
+    "director": "Fritz Lang",
+    "genre": "Sci-Fi",
+    "year": 1927,
+    "rating": 8.3,
+    "overview": "In a futuristic city workers toil for the rich elite.",
+    "cast": "Brigitte Helm, Alfred Abel"
+  },
+  {
+    "id": 28,
+    "title": "Apocalypse Now",
+    "director": "Francis Ford Coppola",
+    "genre": "War",
+    "year": 1979,
+    "rating": 8.5,
+    "overview": "A soldier travels to Cambodia on a mission into the heart of darkness.",
+    "cast": "Martin Sheen, Marlon Brando"
+  },
+  {
+    "id": 346,
+    "title": "Seven Samurai",
+    "director": "Akira Kurosawa",
+    "genre": "Action",
+    "year": 1954,
+    "rating": 8.6,
+    "overview": "Farmers hire seven samurai to help them defend their village.",
+    "cast": "Toshiro Mifune, Takashi Shimura"
+  },
+  {
+    "id": 637,
+    "title": "Ran",
+    "director": "Akira Kurosawa",
+    "genre": "Drama",
+    "year": 1985,
+    "rating": 8.2,
+    "overview": "A warlord tries to divide his kingdom among his three sons.",
+    "cast": "Tatsuya Nakadai, Akira Terao"
+  },
+  {
+    "id": 762,
+    "title": "Rear Window",
+    "director": "Alfred Hitchcock",
+    "genre": "Thriller",
+    "year": 1954,
+    "rating": 8.5,
+    "overview": "A photographer spies on his neighbors from his apartment window.",
+    "cast": "James Stewart, Grace Kelly"
+  },
+  {
+    "id": 289,
+    "title": "Casablanca",
+    "director": "Michael Curtiz",
+    "genre": "Romance",
+    "year": 1942,
+    "rating": 8.5,
+    "overview": "An American expatriate meets a former lover in Morocco during WWII.",
+    "cast": "Humphrey Bogart, Ingrid Bergman"
+  },
+  {
+    "id": 422,
+    "title": "Sunrise: A Song of Two Humans",
+    "director": "F.W. Murnau",
+    "genre": "Romance",
+    "year": 1927,
+    "rating": 8.1,
+    "overview": "A farmer is tempted to murder his wife so he can run away with another woman.",
+    "cast": "George OSullivan, Janet Gaynor"
+  },
+  {
+    "id": 489,
+    "title": "Good Will Hunting",
+    "director": "Gus Van Sant",
+    "genre": "Drama",
+    "year": 1997,
+    "rating": 8.3,
+    "overview": "Will Hunting has a gift for mathematics but needs help to find direction.",
+    "cast": "Matt Damon, Robin Williams"
+  },
+  {
+    "id": 207,
+    "title": "The Pianist",
+    "director": "Roman Polanski",
+    "genre": "War",
+    "year": 2002,
+    "rating": 8.5,
+    "overview": "A Polish Jewish musician struggles to survive the destruction of Warsaw.",
+    "cast": "Adrien Brody, Thomas Kretschmann"
+  },
+  {
+    "id": 1124,
+    "title": "The Prestige",
+    "director": "Christopher Nolan",
+    "genre": "Mystery",
+    "year": 2006,
+    "rating": 8.5,
+    "overview": "Two stage magicians engage in a bitter rivalry.",
+    "cast": "Christian Bale, Hugh Jackman"
+  },
+  {
+    "id": 745,
+    "title": "The Sixth Sense",
+    "director": "M. Night Shyamalan",
+    "genre": "Thriller",
+    "year": 1999,
+    "rating": 8.1,
+    "overview": "A child psychologist treats a young boy who claims to see dead people.",
+    "cast": "Bruce Willis, Haley Joel Osment"
+  },
+  {
+    "id": 475557,
+    "title": "Joker",
+    "director": "Todd Phillips",
+    "genre": "Drama",
+    "year": 2019,
+    "rating": 8.4,
+    "overview": "A mentally troubled stand-up comedian descends into madness.",
+    "cast": "Joaquin Phoenix, Robert De Niro"
+  },
+  {
+    "id": 299536,
+    "title": "Avengers: Infinity War",
+    "director": "Anthony Russo",
+    "genre": "Action",
+    "year": 2018,
+    "rating": 8.4,
+    "overview": "The Avengers face their greatest enemy yet: Thanos.",
+    "cast": "Robert Downey Jr., Chris Hemsworth"
+  },
+  {
+    "id": 24428,
+    "title": "The Avengers",
+    "director": "Joss Whedon",
+    "genre": "Action",
+    "year": 2012,
+    "rating": 8.0,
+    "overview": "Earths mightiest heroes assemble to fight Loki and his alien army.",
+    "cast": "Robert Downey Jr., Chris Evans"
+  },
+  {
+    "id": 120467,
+    "title": "The Grand Budapest Hotel",
+    "director": "Wes Anderson",
+    "genre": "Comedy",
+    "year": 2014,
+    "rating": 8.1,
+    "overview": "A legendary concierge and his protege become implicated in a murder.",
+    "cast": "Ralph Fiennes, Tony Revolori"
+  },
+  {
+    "id": 18,
+    "title": "The Royal Tenenbaums",
+    "director": "Wes Anderson",
+    "genre": "Comedy",
+    "year": 2001,
+    "rating": 7.9,
+    "overview": "An estranged family of former child prodigies reunites.",
+    "cast": "Gene Hackman, Gwyneth Paltrow"
+  },
+  {
+    "id": 137113,
+    "title": "Her",
+    "director": "Spike Jonze",
+    "genre": "Romance",
+    "year": 2013,
+    "rating": 8.0,
+    "overview": "A man falls in love with an artificial intelligence.",
+    "cast": "Joaquin Phoenix, Scarlett Johansson"
+  },
+  {
+    "id": 335984,
+    "title": "Blade Runner 2049",
+    "director": "Denis Villeneuve",
+    "genre": "Sci-Fi",
+    "year": 2017,
+    "rating": 8.0,
+    "overview": "A new blade runner unearths a long-buried secret that threatens civilisation.",
+    "cast": "Ryan Gosling, Harrison Ford"
+  },
+  {
+    "id": 2062,
+    "title": "Ratatouille",
+    "director": "Brad Bird",
+    "genre": "Animation",
+    "year": 2007,
+    "rating": 8.1,
+    "overview": "A rat dreams of becoming a great French chef.",
+    "cast": "Patton Oswalt, Ian Holm"
+  },
+  {
+    "id": 12,
+    "title": "Finding Nemo",
+    "director": "Andrew Stanton",
+    "genre": "Animation",
+    "year": 2003,
+    "rating": 8.1,
+    "overview": "After his son is taken, a timid clownfish sets out on a journey to bring him home.",
+    "cast": "Albert Brooks, Ellen DeGeneres"
+  },
+  {
+    "id": 585,
+    "title": "Monsters Inc",
+    "director": "Pete Docter",
+    "genre": "Animation",
+    "year": 2001,
+    "rating": 8.1,
+    "overview": "Monsters generate their cities power by scaring children.",
+    "cast": "Billy Crystal, John Goodman"
+  },
+  {
+    "id": 920,
+    "title": "Cars",
+    "director": "John Lasseter",
+    "genre": "Animation",
+    "year": 2006,
+    "rating": 7.2,
+    "overview": "A hotshot race-car gets stranded in a small town.",
+    "cast": "Owen Wilson, Paul Newman"
+  },
+  {
+    "id": 109445,
+    "title": "Frozen",
+    "director": "Chris Buck",
+    "genre": "Animation",
+    "year": 2013,
+    "rating": 7.4,
+    "overview": "Elsa accidentally triggers an eternal winter and her sister sets out to help.",
+    "cast": "Kristen Bell, Idina Menzel"
+  },
+  {
+    "id": 10193,
+    "title": "Toy Story 3",
+    "director": "Lee Unkrich",
+    "genre": "Animation",
+    "year": 2010,
+    "rating": 8.3,
+    "overview": "The toys are accidentally donated to a daycare center.",
+    "cast": "Tom Hanks, Tim Allen"
+  },
+  {
+    "id": 49013,
+    "title": "Brave",
+    "director": "Mark Andrews",
+    "genre": "Animation",
+    "year": 2012,
+    "rating": 7.1,
+    "overview": "A Scottish princess defies an ancient custom and turns her mother into a bear.",
+    "cast": "Kelly Macdonald, Billy Connolly"
+  },
+  {
+    "id": 301528,
+    "title": "Toy Story 4",
+    "director": "Josh Cooley",
+    "genre": "Animation",
+    "year": 2019,
+    "rating": 7.8,
+    "overview": "Woody discovers his purpose after a new toy enters the picture.",
+    "cast": "Tom Hanks, Tim Allen"
+  },
+  {
+    "id": 14160,
+    "title": "Up",
+    "director": "Pete Docter",
+    "genre": "Animation",
+    "year": 2009,
+    "rating": 8.3,
+    "overview": "An old widower and a young stowaway travel to South America by balloon.",
+    "cast": "Edward Asner, Jordan Nagai"
+  },
+  {
+    "id": 9806,
+    "title": "The Incredibles",
+    "director": "Brad Bird",
+    "genre": "Animation",
+    "year": 2004,
+    "rating": 8.0,
+    "overview": "A family of undercover superheroes tries to live a quiet suburban life.",
+    "cast": "Craig T. Nelson, Holly Hunter"
+  },
+  {
+    "id": 920,
+    "title": "WALL-E",
+    "director": "Andrew Stanton",
+    "genre": "Animation",
+    "year": 2008,
+    "rating": 8.4,
+    "overview": "A robot falls in love while cleaning an abandoned Earth.",
+    "cast": "Ben Burtt, Elissa Knight"
+  },
+  {
+    "id": 8392,
+    "title": "My Neighbor Totoro",
+    "director": "Hayao Miyazaki",
+    "genre": "Animation",
+    "year": 1988,
+    "rating": 8.1,
+    "overview": "Two sisters discover magical creatures in rural Japan.",
+    "cast": "Noriko Hidaka, Dakota Fanning"
+  },
+  {
+    "id": 149870,
+    "title": "Princess Mononoke",
+    "director": "Hayao Miyazaki",
+    "genre": "Animation",
+    "year": 1997,
+    "rating": 8.3,
+    "overview": "A prince is caught in a struggle between forest gods and humans.",
+    "cast": "Yoji Matsuda, Yuriko Ishida"
+  },
+  {
+    "id": 16869,
+    "title": "Inglourious Basterds",
+    "director": "Quentin Tarantino",
+    "genre": "War",
+    "year": 2009,
+    "rating": 8.3,
+    "overview": "In Nazi-occupied France a young Jewish woman plans revenge.",
+    "cast": "Brad Pitt, Christoph Waltz"
+  },
+  {
+    "id": 161,
+    "title": "Ocean s Eleven",
+    "director": "Steven Soderbergh",
+    "genre": "Crime",
+    "year": 2001,
+    "rating": 7.7,
+    "overview": "Danny Ocean assembles a team to rob three Las Vegas casinos simultaneously.",
+    "cast": "George Clooney, Brad Pitt"
+  },
+  {
+    "id": 680,
+    "title": "Django Unchained",
+    "director": "Quentin Tarantino",
+    "genre": "Western",
+    "year": 2012,
+    "rating": 8.4,
+    "overview": "A freed slave sets out to rescue his wife from a brutal plantation owner.",
+    "cast": "Jamie Foxx, Christoph Waltz"
+  },
+  {
+    "id": 453,
+    "title": "A Beautiful Mind",
+    "director": "Ron Howard",
+    "genre": "Drama",
+    "year": 2001,
+    "rating": 8.2,
+    "overview": "A brilliant mathematician descends into the world of delusion.",
+    "cast": "Russell Crowe, Ed Harris"
+  },
+  {
+    "id": 640,
+    "title": "Catch Me If You Can",
+    "director": "Steven Spielberg",
+    "genre": "Crime",
+    "year": 2002,
+    "rating": 8.1,
+    "overview": "A young con artist successfully performs many cons while being chased by the FBI.",
+    "cast": "Leonardo DiCaprio, Tom Hanks"
+  },
+  {
+    "id": 620,
+    "title": "Rain Man",
+    "director": "Barry Levinson",
+    "genre": "Drama",
+    "year": 1988,
+    "rating": 8.0,
+    "overview": "A man discovers he has a brother who is an autistic savant.",
+    "cast": "Tom Cruise, Dustin Hoffman"
+  },
+  {
+    "id": 9593,
+    "title": "The Bourne Identity",
+    "director": "Doug Liman",
+    "genre": "Action",
+    "year": 2002,
+    "rating": 7.9,
+    "overview": "A man suffering from amnesia tries to discover his true identity.",
+    "cast": "Matt Damon, Franka Potente"
+  },
+  {
+    "id": 197,
+    "title": "Braveheart",
+    "director": "Mel Gibson",
+    "genre": "War",
+    "year": 1995,
+    "rating": 8.3,
+    "overview": "Scottish warrior William Wallace leads a revolt against English rule.",
+    "cast": "Mel Gibson, Sophie Marceau"
+  },
+  {
+    "id": 205596,
+    "title": "The Imitation Game",
+    "director": "Morten Tyldum",
+    "genre": "History",
+    "year": 2014,
+    "rating": 8.0,
+    "overview": "Alan Turing decodes German intelligence messages to help win the war.",
+    "cast": "Benedict Cumberbatch, Keira Knightley"
+  },
+  {
+    "id": 396535,
+    "title": "Bohemian Rhapsody",
+    "director": "Bryan Singer",
+    "genre": "Drama",
+    "year": 2018,
+    "rating": 8.0,
+    "overview": "The story of the legendary rock band Queen and singer Freddie Mercury.",
+    "cast": "Rami Malek, Lucy Boynton"
+  },
+  {
+    "id": 284054,
+    "title": "Black Panther",
+    "director": "Ryan Coogler",
+    "genre": "Action",
+    "year": 2018,
+    "rating": 7.3,
+    "overview": "T Challa returns home to the fictional nation of Wakanda.",
+    "cast": "Chadwick Boseman, Michael B. Jordan"
+  },
+  {
+    "id": 361743,
+    "title": "Top Gun: Maverick",
+    "director": "Joseph Kosinski",
+    "genre": "Action",
+    "year": 2022,
+    "rating": 8.3,
+    "overview": "Maverick trains a group of Top Gun graduates for a dangerous mission.",
+    "cast": "Tom Cruise, Jennifer Connelly"
+  },
+  {
+    "id": 634649,
+    "title": "Spider-Man: No Way Home",
+    "director": "Jon Watts",
+    "genre": "Action",
+    "year": 2021,
+    "rating": 8.3,
+    "overview": "Spider-Man asks Doctor Strange to make the world forget his secret identity.",
+    "cast": "Tom Holland, Zendaya"
+  },
+  {
+    "id": 19995,
+    "title": "Avatar",
+    "director": "James Cameron",
+    "genre": "Sci-Fi",
+    "year": 2009,
+    "rating": 7.8,
+    "overview": "A paraplegic marine dispatched to Pandora becomes torn between worlds.",
+    "cast": "Sam Worthington, Zoe Saldana"
+  },
+  {
+    "id": 597,
+    "title": "Titanic",
+    "director": "James Cameron",
+    "genre": "Romance",
+    "year": 1997,
+    "rating": 7.9,
+    "overview": "A seventeen-year-old aristocrat falls in love with a kind but poor artist aboard the Titanic.",
+    "cast": "Leonardo DiCaprio, Kate Winslet"
+  },
+  {
+    "id": 218,
+    "title": "The Terminator",
+    "director": "James Cameron",
+    "genre": "Sci-Fi",
+    "year": 1984,
+    "rating": 8.0,
+    "overview": "A cyborg assassin is sent from the future to kill Sarah Connor.",
+    "cast": "Arnold Schwarzenegger, Linda Hamilton"
+  },
+  {
+    "id": 87101,
+    "title": "Terminator 2: Judgment Day",
+    "director": "James Cameron",
+    "genre": "Sci-Fi",
+    "year": 1991,
+    "rating": 8.5,
+    "overview": "A liquid metal Terminator is sent to eliminate John Connor.",
+    "cast": "Arnold Schwarzenegger, Linda Hamilton"
+  },
+  {
+    "id": 9479,
+    "title": "From Hell",
+    "director": "Albert Hughes",
+    "genre": "Thriller",
+    "year": 2001,
+    "rating": 6.8,
+    "overview": "An inspector investigates the gruesome Jack the Ripper murders.",
+    "cast": "Johnny Depp, Heather Graham"
+  },
+  {
+    "id": 453,
+    "title": "Memento",
+    "director": "Christopher Nolan",
+    "genre": "Mystery",
+    "year": 2000,
+    "rating": 8.4,
+    "overview": "A man with short-term memory loss investigates his wifes murder.",
+    "cast": "Guy Pearce, Carrie-Anne Moss"
+  },
+  {
+    "id": 68718,
+    "title": "Django Unchained 2",
+    "director": "Denis Villeneuve",
+    "genre": "Thriller",
+    "year": 2016,
+    "rating": 8.1,
+    "overview": "A linguist is recruited to communicate with alien visitors.",
+    "cast": "Amy Adams, Jeremy Renner"
+  },
+  {
+    "id": 335984,
+    "title": "Arrival",
+    "director": "Denis Villeneuve",
+    "genre": "Sci-Fi",
+    "year": 2016,
+    "rating": 8.0,
+    "overview": "A linguist works to communicate with extraterrestrials.",
+    "cast": "Amy Adams, Jeremy Renner"
+  },
+  {
+    "id": 335983,
+    "title": "Sicario",
+    "director": "Denis Villeneuve",
+    "genre": "Thriller",
+    "year": 2015,
+    "rating": 7.6,
+    "overview": "An idealistic FBI agent joins a government task force to fight a drug cartel.",
+    "cast": "Emily Blunt, Benicio del Toro"
+  },
+  {
+    "id": 399055,
+    "title": "Dunkirk",
+    "director": "Christopher Nolan",
+    "genre": "War",
+    "year": 2017,
+    "rating": 7.9,
+    "overview": "Allied soldiers are evacuated from the beaches of Dunkirk.",
+    "cast": "Fionn Whitehead, Tom Hardy"
+  },
+  {
+    "id": 466272,
+    "title": "Once Upon a Time in Hollywood",
+    "director": "Quentin Tarantino",
+    "genre": "Drama",
+    "year": 2019,
+    "rating": 7.6,
+    "overview": "A faded TV actor and his stunt double strive to achieve fame in Hollywood.",
+    "cast": "Leonardo DiCaprio, Brad Pitt"
+  },
+  {
+    "id": 503919,
+    "title": "Knives Out",
+    "director": "Rian Johnson",
+    "genre": "Mystery",
+    "year": 2019,
+    "rating": 7.9,
+    "overview": "A detective investigates the death of a patriarch of an eccentric family.",
+    "cast": "Daniel Craig, Chris Evans"
+  },
+  {
+    "id": 496243,
+    "title": "Parasite",
+    "director": "Bong Joon-ho",
+    "genre": "Drama",
+    "year": 2019,
+    "rating": 8.5,
+    "overview": "A poor family schemes to become employed by a wealthy family.",
+    "cast": "Song Kang-ho, Lee Sun-kyun"
+  },
+  {
+    "id": 560144,
+    "title": "The Father",
+    "director": "Florian Zeller",
+    "genre": "Drama",
+    "year": 2020,
+    "rating": 8.3,
+    "overview": "A man refuses all assistance as he ages, and his daughter struggles to help.",
+    "cast": "Anthony Hopkins, Olivia Colman"
+  },
+  {
+    "id": 508943,
+    "title": "Luca",
+    "director": "Enrico Casarosa",
+    "genre": "Animation",
+    "year": 2021,
+    "rating": 7.4,
+    "overview": "Two sea monsters befriend a human child in Italy.",
+    "cast": "Jacob Tremblay, Jack Dylan Grazer"
+  },
+  {
+    "id": 438631,
+    "title": "Dune",
+    "director": "Denis Villeneuve",
+    "genre": "Sci-Fi",
+    "year": 2021,
+    "rating": 8.0,
+    "overview": "A mythic journey of a young man to ensure the future of his people.",
+    "cast": "Timothee Chalamet, Rebecca Ferguson"
+  },
+  {
+    "id": 315162,
+    "title": "Puss in Boots: The Last Wish",
+    "director": "Joel Crawford",
+    "genre": "Animation",
+    "year": 2022,
+    "rating": 7.9,
+    "overview": "Puss in Boots discovers his nine lives are nearly up.",
+    "cast": "Antonio Banderas, Salma Hayek"
+  },
+  {
+    "id": 760741,
+    "title": "Beast",
+    "director": "Baltasar Kormakur",
+    "genre": "Thriller",
+    "year": 2022,
+    "rating": 6.0,
+    "overview": "A father and his daughters are stalked by a lion in South Africa.",
+    "cast": "Idris Elba, Iyana Halley"
+  },
+  {
+    "id": 614934,
+    "title": "Elvis",
+    "director": "Baz Luhrmann",
+    "genre": "Drama",
+    "year": 2022,
+    "rating": 7.3,
+    "overview": "The life and career of Elvis Presley through the lens of his complicated relationship with Colonel Tom Parker.",
+    "cast": "Austin Butler, Tom Hanks"
+  },
+  {
+    "id": 505642,
+    "title": "Black Panther: Wakanda Forever",
+    "director": "Ryan Coogler",
+    "genre": "Action",
+    "year": 2022,
+    "rating": 6.8,
+    "overview": "The people of Wakanda fight to protect their home from world powers.",
+    "cast": "Letitia Wright, Lupita Nyongo"
+  },
+  {
+    "id": 76600,
+    "title": "Avatar: The Way of Water",
+    "director": "James Cameron",
+    "genre": "Sci-Fi",
+    "year": 2022,
+    "rating": 7.6,
+    "overview": "Jake Sully and his family protect their new home on Pandora.",
+    "cast": "Sam Worthington, Zoe Saldana"
+  },
+  {
+    "id": 823464,
+    "title": "Godzilla x Kong: The New Empire",
+    "director": "Adam Wingard",
+    "genre": "Action",
+    "year": 2024,
+    "rating": 6.0,
+    "overview": "Two ancient titans clash in a battle of supremacy.",
+    "cast": "Rebecca Hall, Brian Tyree Henry"
+  }
+]

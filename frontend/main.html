@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineMate — Browse Films</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #0d0d0d; --cream: #f7f3ee; --gold: #c9a84c; --mid: #6b6560; --border: rgba(0,0,0,0.1); --red: #b5291e; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); min-height: 100vh; }
+
+    /* NAV */
+    nav { background: var(--ink); display: flex; align-items: center; justify-content: space-between; padding: 0 2rem; height: 60px; position: sticky; top: 0; z-index: 100; gap: 1rem; }
+    .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.3rem; font-weight: 700; color: var(--cream); white-space: nowrap; }
+    .nav-logo span { color: var(--gold); }
+    .nav-center { display: flex; align-items: center; gap: 0.5rem; }
+    .nav-center label { font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; color: #5a5550; white-space: nowrap; }
+    .nav-center select { padding: 0.3rem 0.6rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.75rem; outline: none; cursor: pointer; }
+    .nav-center select option { background: #222; }
+    .nav-right { display: flex; align-items: center; gap: 1rem; }
+    .user-greeting { font-size: 0.82rem; color: #5a5550; white-space: nowrap; }
+    .user-greeting strong { color: var(--gold); }
+    .btn-logout { font-size: 0.75rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; color: var(--cream); background: transparent; border: 1px solid rgba(255,255,255,0.2); padding: 0.35rem 0.8rem; border-radius: 3px; cursor: pointer; transition: border-color 0.2s; }
+    .btn-logout:hover { border-color: var(--gold); color: var(--gold); }
+
+    /* SUBSCRIPTIONS SECTION */
+    .subs-section { background: #1a1a1a; padding: 1.2rem 2rem; border-bottom: 2px solid var(--gold); }
+    .subs-header { display: flex; align-items: center; justify-content: space-between; margin-bottom: 0.8rem; }
+    .subs-header h2 { font-family: 'Playfair Display', serif; font-size: 1.1rem; color: var(--cream); }
+    .subs-header h2 span { color: var(--gold); font-size: 0.85rem; font-family: 'DM Sans', sans-serif; margin-left: 0.5rem; }
+    .subs-list { display: flex; gap: 0.6rem; flex-wrap: wrap; }
+    .sub-chip { display: flex; align-items: center; gap: 0.5rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(201,168,76,0.3); border-radius: 999px; padding: 0.3rem 0.8rem 0.3rem 1rem; font-size: 0.78rem; color: var(--cream); }
+    .sub-chip-title { font-weight: 500; }
+    .sub-chip-year { color: var(--gold); font-size: 0.7rem; }
+    .sub-remove { background: none; border: none; color: #5a5550; cursor: pointer; font-size: 1rem; line-height: 1; padding: 0 0.2rem; transition: color 0.15s; }
+    .sub-remove:hover { color: var(--red); }
+    .subs-empty { font-size: 0.82rem; color: #5a5550; font-style: italic; }
+
+    /* QUERY SECTION */
+    .query-section { background: var(--ink); padding: 1rem 2rem 1.2rem; }
+    .query-section h3 { font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: #5a5550; margin-bottom: 0.8rem; }
+    .query-fields { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 0.5rem; margin-bottom: 0.7rem; }
+    .q-input { padding: 0.6rem 0.8rem; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: 4px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.82rem; outline: none; width: 100%; }
+    .q-input::placeholder { color: rgba(255,255,255,0.25); }
+    .q-input:focus { border-color: var(--gold); }
+    .query-actions { display: flex; gap: 0.5rem; }
+    .btn-gold { padding: 0.6rem 1.4rem; background: var(--gold); color: var(--ink); border: none; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; cursor: pointer; transition: opacity 0.2s; }
+    .btn-gold:hover { opacity: 0.85; }
+    .btn-ghost { padding: 0.6rem 1rem; background: transparent; border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.8rem; cursor: pointer; }
+
+    /* GENRE STRIP */
+    .genre-strip { padding: 0.7rem 2rem; display: flex; gap: 0.4rem; flex-wrap: wrap; border-bottom: 1px solid var(--border); background: #fff; }
+    .genre-btn { padding: 4px 12px; border: 1.5px solid var(--border); border-radius: 999px; font-size: 0.76rem; font-weight: 500; background: transparent; cursor: pointer; color: var(--ink); transition: all 0.15s; }
+    .genre-btn:hover, .genre-btn.active { background: var(--ink); color: var(--cream); border-color: var(--ink); }
+
+    /* SECTION TITLE */
+    .section-title { padding: 1rem 2rem 0.5rem; display: flex; align-items: baseline; gap: 0.8rem; }
+    .section-title h1 { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 700; }
+    .count { font-size: 0.8rem; color: var(--mid); }
+
+    /* GRID */
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(165px, 1fr)); gap: 1rem; padding: 0 2rem 3rem; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 6px; overflow: hidden; cursor: pointer; transition: transform 0.15s, box-shadow 0.15s; }
+    .card:hover { transform: translateY(-3px); box-shadow: 0 6px 20px rgba(0,0,0,0.1); }
+    .poster { width: 100%; aspect-ratio: 2/3; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 1rem; gap: 6px; }
+    .poster-title { font-family: 'Playfair Display', serif; font-style: italic; font-size: 0.8rem; color: rgba(255,255,255,0.85); text-align: center; line-height: 1.3; }
+    .poster-year { font-size: 0.68rem; color: var(--gold); font-weight: 500; }
+    .card-body { padding: 0.65rem; }
+    .card-title { font-family: 'Playfair Display', serif; font-size: 0.82rem; font-weight: 700; margin-bottom: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-dir { font-size: 0.7rem; color: var(--mid); margin-bottom: 5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .card-meta { display: flex; align-items: center; gap: 4px; }
+    .genre-tag { font-size: 0.6rem; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 5px; border-radius: 2px; background: #f0ebe3; color: var(--mid); }
+    .rating { margin-left: auto; font-size: 0.72rem; font-weight: 500; color: var(--gold); }
+    .card-actions { padding: 0 0.65rem 0.65rem; }
+    .btn-subscribe { width: 100%; padding: 5px; background: var(--ink); color: var(--cream); border: none; border-radius: 3px; font-family: 'DM Sans', sans-serif; font-size: 0.72rem; font-weight: 500; cursor: pointer; transition: background 0.15s; letter-spacing: 0.04em; }
+    .btn-subscribe:hover { background: #333; }
+    .btn-subscribe.subscribed { background: var(--gold); color: var(--ink); }
+    .btn-subscribe.subscribed:hover { background: #b8952f; }
+
+    /* STATES */
+    .loading, .empty { grid-column: 1/-1; text-align: center; padding: 4rem; color: var(--mid); }
+    .spinner { display: inline-block; width: 28px; height: 28px; border: 3px solid rgba(0,0,0,0.1); border-top-color: var(--gold); border-radius: 50%; animation: spin 0.7s linear infinite; margin-bottom: 0.8rem; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .no-result { grid-column: 1/-1; text-align: center; padding: 3rem; color: var(--mid); font-style: italic; }
+
+    /* MODAL */
+    .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.65); z-index: 200; align-items: center; justify-content: center; }
+    .modal-overlay.open { display: flex; }
+    .modal { background: #fff; border-radius: 8px; padding: 2rem; max-width: 500px; width: 90%; position: relative; max-height: 90vh; overflow-y: auto; }
+    .modal-close { position: absolute; top: 1rem; right: 1rem; background: none; border: none; font-size: 1.4rem; cursor: pointer; color: var(--mid); }
+    .modal h2 { font-family: 'Playfair Display', serif; font-size: 1.5rem; margin-bottom: 0.3rem; }
+    .modal-director { font-size: 0.82rem; color: var(--mid); margin-bottom: 1rem; }
+    .modal-overview { font-size: 0.9rem; line-height: 1.65; margin-bottom: 1rem; }
+    .modal-tags { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-bottom: 1rem; align-items: center; }
+    .modal-tag { font-size: 0.72rem; padding: 4px 10px; border-radius: 3px; background: #f0ebe3; color: var(--mid); }
+    .modal-rating { font-size: 0.95rem; font-weight: 500; color: var(--gold); }
+    .modal-cast { font-size: 0.8rem; color: var(--mid); margin-bottom: 1.2rem; }
+    .modal-sub-btn { width: 100%; padding: 0.8rem; background: var(--ink); color: var(--cream); border: none; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 500; cursor: pointer; letter-spacing: 0.05em; text-transform: uppercase; transition: background 0.15s; }
+    .modal-sub-btn:hover { background: #333; }
+    .modal-sub-btn.subscribed { background: var(--gold); color: var(--ink); }
+
+    /* SUBSCRIBE BAND */
+    .sub-band { background: var(--ink); color: var(--cream); padding: 1.5rem 2rem; display: flex; align-items: center; gap: 1.5rem; flex-wrap: wrap; }
+    .sub-band h3 { font-family: 'Playfair Display', serif; font-size: 1.1rem; }
+    .sub-band p { font-size: 0.78rem; color: #5a5550; margin-top: 2px; }
+    .sub-form { display: flex; gap: 0.5rem; margin-left: auto; }
+    .sub-input { padding: 0.6rem 1rem; background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.15); border-radius: 4px; color: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; outline: none; width: 200px; }
+    .sub-input::placeholder { color: rgba(255,255,255,0.3); }
+    .sub-msg { font-size: 0.82rem; color: var(--gold); }
+
+    @media (max-width: 600px) { .nav-center { display: none; } .query-fields { grid-template-columns: 1fr 1fr; } .sub-form { width: 100%; } .sub-input { flex: 1; } }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Cine<span>Mate</span></div>
+  <div class="nav-center">
+    <label>Backend:</label>
+    <select id="backendSelect">
+      <option value="http://100.56.165.174">EC2 (Flask)</option>
+      <option value="http://18.208.221.66">ECS Fargate</option>
+      <option value="https://ish4adz2di.execute-api.us-east-1.amazonaws.com/prod">Lambda + API GW</option>
+    </select>
+  </div>
+  <div class="nav-right">
+    <span class="user-greeting">Hello, <strong id="navUsername"></strong></span>
+    <button class="btn-logout" id="btnLogout">Sign Out</button>
+  </div>
+</nav>
+
+<!-- MY SUBSCRIPTIONS -->
+<div class="subs-section">
+  <div class="subs-header">
+    <h2>My Subscriptions <span id="subsCount"></span></h2>
+  </div>
+  <div class="subs-list" id="subsList">
+    <span class="subs-empty">No subscriptions yet — browse films below and click Subscribe!</span>
+  </div>
+</div>
+
+<!-- QUERY AREA -->
+<div class="query-section">
+  <h3>Search Films</h3>
+  <div class="query-fields">
+    <input class="q-input" id="qTitle"    placeholder="Title"/>
+    <input class="q-input" id="qDirector" placeholder="Director"/>
+    <input class="q-input" id="qGenre"    placeholder="Genre" oninput="this.value=this.value.replace(/\b\w/g,c=>c.toUpperCase())"/>
+    <input class="q-input" id="qYear"     placeholder="Year (e.g. 2010)"/>
+    <input class="q-input" id="qRating"   placeholder="Min rating (e.g. 8.0)"/>
+  </div>
+  <div class="query-actions">
+    <button class="btn-gold" id="btnQuery">Query</button>
+    <button class="btn-ghost" id="btnClearQuery">Clear</button>
+  </div>
+</div>
+
+<!-- GENRE FILTERS -->
+<div class="genre-strip" id="genreStrip">
+  <button class="genre-btn active" data-genre="">All</button>
+</div>
+
+<!-- MOVIE GRID -->
+<div class="section-title">
+  <h1 id="sectionTitle">All Films</h1>
+  <span class="count" id="sectionCount"></span>
+</div>
+<div class="grid" id="movieGrid">
+  <div class="loading"><div class="spinner"></div><br/>Loading films…</div>
+</div>
+
+<!-- EMAIL SUBSCRIBE BAND -->
+<div class="sub-band">
+  <div><h3>Stay in the loop</h3><p>Get notified when new films are added.</p></div>
+  <div class="sub-form">
+    <input type="email" class="sub-input" id="subEmail" placeholder="your@email.com"/>
+    <button class="btn-gold" id="subBtn">Subscribe</button>
+  </div>
+  <span class="sub-msg" id="subMsg"></span>
+</div>
+
+<!-- MOVIE DETAIL MODAL -->
+<div class="modal-overlay" id="modalOverlay">
+  <div class="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <h2 id="mTitle"></h2>
+    <p class="modal-director" id="mDirector"></p>
+    <p class="modal-overview" id="mOverview"></p>
+    <div class="modal-tags">
+      <span class="modal-tag" id="mGenre"></span>
+      <span class="modal-tag" id="mYear"></span>
+      <span class="modal-rating" id="mRating"></span>
+    </div>
+    <p class="modal-cast" id="mCast"></p>
+    <button class="modal-sub-btn" id="modalSubBtn">Subscribe</button>
+  </div>
+</div>
+
+<script>
+  const GENRES = ['Action','Animation','Comedy','Crime','Drama','Fantasy','History','Mystery','Romance','Sci-Fi','Thriller','War','Western'];
+  const COLORS = ['#1a1a2e','#16213e','#1a0a0a','#0a1a0a','#1a1510','#0f0f1a','#1a0f0a','#0a0f1a','#1a1a0a','#0f1a1a','#1a0a1a','#0a1a1a'];
+
+  // Auth
+  const userEmail = sessionStorage.getItem('cinemate_user');
+  const username  = sessionStorage.getItem('cinemate_username');
+  if (!userEmail) window.location.href = 'index.html';
+  document.getElementById('navUsername').textContent = username || userEmail;
+
+  // Backend
+  const backendSelect = document.getElementById('backendSelect');
+  const savedBackend  = localStorage.getItem('cinemate_backend');
+  if (savedBackend) backendSelect.value = savedBackend;
+  function API() { return backendSelect.value; }
+  backendSelect.addEventListener('change', () => {
+    localStorage.setItem('cinemate_backend', backendSelect.value);
+    loadAll();
+    loadSubscriptions();
+  });
+
+  // Sign out
+  document.getElementById('btnLogout').addEventListener('click', () => {
+    sessionStorage.clear();
+    window.location.href = 'index.html';
+  });
+
+  // ── SUBSCRIPTIONS ────────────────────────────────────────────
+  let mySubscriptions = new Set();
+
+  async function loadSubscriptions() {
+    try {
+      const res  = await fetch(`${API()}/subscriptions?email=${encodeURIComponent(userEmail)}`);
+      const data = await res.json();
+      const list = data.subscriptions || [];
+      mySubscriptions = new Set(list.map(s => s.title_year));
+      renderSubscriptions(list);
+      refreshCardButtons();
+    } catch (e) {
+      console.warn('Could not load subscriptions', e);
+    }
+  }
+
+  function renderSubscriptions(list) {
+    const el    = document.getElementById('subsList');
+    const count = document.getElementById('subsCount');
+    count.textContent = list.length ? `(${list.length})` : '';
+    if (!list.length) {
+      el.innerHTML = '<span class="subs-empty">No subscriptions yet — browse films below and click Subscribe!</span>';
+      return;
+    }
+    el.innerHTML = list.map(s => `
+      <div class="sub-chip" id="chip-${CSS.escape(s.title_year)}">
+        <span class="sub-chip-title">${s.title}</span>
+        <span class="sub-chip-year">${s.year || ''}</span>
+        <button class="sub-remove" onclick="removeSubscription('${encodeURIComponent(s.title_year)}')" title="Remove">×</button>
+      </div>`).join('');
+  }
+
+  async function addSubscription(movie) {
+    try {
+      const res = await fetch(`${API()}/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          email:      userEmail,
+          title_year: movie.title_year,
+          title:      movie.title,
+          director:   movie.director,
+          genre:      movie.genre,
+          rating:     movie.rating,
+          year:       movie.year,
+        })
+      });
+      if (res.ok) {
+        mySubscriptions.add(movie.title_year);
+        loadSubscriptions();
+        refreshCardButtons();
+      }
+    } catch(e) { console.error(e); }
+  }
+
+  async function removeSubscription(encodedTY) {
+    const title_year = decodeURIComponent(encodedTY);
+    try {
+      const res = await fetch(`${API()}/subscription`, {
+        method: 'DELETE',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: userEmail, title_year })
+      });
+      if (res.ok) {
+        mySubscriptions.delete(title_year);
+        loadSubscriptions();
+        refreshCardButtons();
+      }
+    } catch(e) { console.error(e); }
+  }
+
+  function refreshCardButtons() {
+    document.querySelectorAll('.btn-subscribe').forEach(btn => {
+      const ty = btn.dataset.titleYear;
+      if (mySubscriptions.has(ty)) {
+        btn.textContent = '✓ Subscribed';
+        btn.classList.add('subscribed');
+      } else {
+        btn.textContent = '+ Subscribe';
+        btn.classList.remove('subscribed');
+      }
+    });
+  }
+
+  // ── GENRE BUTTONS ─────────────────────────────────────────────
+  const strip = document.getElementById('genreStrip');
+  GENRES.forEach(g => {
+    const btn = document.createElement('button');
+    btn.className = 'genre-btn';
+    btn.dataset.genre = g;
+    btn.textContent = g;
+    strip.appendChild(btn);
+  });
+  strip.addEventListener('click', e => {
+    if (!e.target.matches('.genre-btn')) return;
+    document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
+    e.target.classList.add('active');
+    const genre = e.target.dataset.genre;
+    genre ? loadByGenre(genre) : loadAll();
+  });
+
+  // ── LOAD MOVIES ───────────────────────────────────────────────
+  async function loadAll() {
+    setTitle('All Films'); showLoading();
+    try {
+      const res  = await fetch(`${API()}/movies`);
+      const data = await res.json();
+      renderMovies(data.movies || []);
+    } catch { showError(); }
+  }
+
+  async function loadByGenre(genre) {
+    setTitle(genre); showLoading();
+    try {
+      const isLambda = API().includes('execute-api');
+      const url = isLambda
+        ? `${API()}/genre/${encodeURIComponent(genre)}`
+        : `${API()}/movies/genre/${encodeURIComponent(genre)}`;
+      const res  = await fetch(url);
+      const data = await res.json();
+      renderMovies(data.movies || []);
+    } catch { showError(); }
+  }
+
+  async function queryMovies() {
+    const title    = document.getElementById('qTitle').value.trim();
+    const director = document.getElementById('qDirector').value.trim();
+    const genre    = document.getElementById('qGenre').value.trim();
+    const year     = document.getElementById('qYear').value.trim();
+    const rating   = document.getElementById('qRating').value.trim();
+
+    if (!title && !director && !genre && !year && !rating) {
+      alert('Please fill in at least one field to query.');
+      return;
+    }
+
+    const params = new URLSearchParams();
+    if (title)    params.append('title', title);
+    if (director) params.append('director', director);
+    if (genre)    params.append('genre', genre);
+    if (year)     params.append('year', year);
+    if (rating)   params.append('rating', rating);
+
+    setTitle('Query Results'); showLoading();
+    try {
+      const isLambda = API().includes('execute-api');
+      const searchURL = isLambda
+        ? `${API()}/search?${params}`
+        : `${API()}/movies/search?${params}`;
+      const res  = await fetch(searchURL);
+      const data = await res.json();
+      const movies = data.movies || [];
+      if (!movies.length) {
+        document.getElementById('movieGrid').innerHTML = '<div class="no-result">No result is retrieved. Please query again.</div>';
+        document.getElementById('sectionCount').textContent = '';
+      } else {
+        renderMovies(movies);
+      }
+    } catch { showError(); }
+  }
+
+  // ── RENDER ────────────────────────────────────────────────────
+  function setTitle(t) {
+    document.getElementById('sectionTitle').textContent = t;
+    document.getElementById('sectionCount').textContent = '';
+  }
+  function showLoading() {
+    document.getElementById('movieGrid').innerHTML = '<div class="loading"><div class="spinner"></div><br/>Loading…</div>';
+  }
+  function showError() {
+    document.getElementById('movieGrid').innerHTML = '<div class="empty">Could not load films. Try a different backend.</div>';
+  }
+  function getColor(title) {
+    let h = 0;
+    for (let i = 0; i < title.length; i++) h = title.charCodeAt(i) + ((h << 5) - h);
+    return COLORS[Math.abs(h) % COLORS.length];
+  }
+
+  let currentMovies = [];
+
+  function renderMovies(movies) {
+    currentMovies = movies;
+    const grid = document.getElementById('movieGrid');
+    document.getElementById('sectionCount').textContent = `${movies.length} film${movies.length !== 1 ? 's' : ''}`;
+    if (!movies.length) { grid.innerHTML = '<div class="no-result">No result is retrieved. Please query again.</div>'; return; }
+
+    grid.innerHTML = movies.map(m => {
+      const ty        = m.title_year || '';
+      const isSub     = mySubscriptions.has(ty);
+      const subLabel  = isSub ? '✓ Subscribed' : '+ Subscribe';
+      const subClass  = isSub ? 'btn-subscribe subscribed' : 'btn-subscribe';
+      const safe      = encodeURIComponent(JSON.stringify(m));
+      return `
+        <div class="card">
+          <div class="poster" style="background:${getColor(m.title||'')};" onclick="openModal('${safe}')">
+            <div class="poster-title">${m.title||''}</div>
+            <div class="poster-year">${m.year||''}</div>
+          </div>
+          <div class="card-body" onclick="openModal('${safe}')">
+            <div class="card-title" title="${m.title||''}">${m.title||''}</div>
+            <div class="card-dir">${m.director||''}</div>
+            <div class="card-meta">
+              <span class="genre-tag">${m.genre||''}</span>
+              <span class="rating">★ ${m.rating||''}</span>
+            </div>
+          </div>
+          <div class="card-actions">
+            <button class="${subClass}" data-title-year="${ty}" data-movie="${safe}"
+              onclick="toggleSubscription(this)">${subLabel}</button>
+          </div>
+        </div>`;
+    }).join('');
+  }
+
+  function toggleSubscription(btn) {
+    const ty    = btn.dataset.titleYear;
+    const movie = JSON.parse(decodeURIComponent(btn.dataset.movie));
+    if (mySubscriptions.has(ty)) {
+      removeSubscription(encodeURIComponent(ty));
+    } else {
+      addSubscription(movie);
+    }
+  }
+
+  // ── MODAL ─────────────────────────────────────────────────────
+  let modalMovie = null;
+
+  function openModal(encoded) {
+    modalMovie = JSON.parse(decodeURIComponent(encoded));
+    document.getElementById('mTitle').textContent    = modalMovie.title || '';
+    document.getElementById('mDirector').textContent = `Directed by ${modalMovie.director || ''}`;
+    document.getElementById('mOverview').textContent = modalMovie.overview || '';
+    document.getElementById('mGenre').textContent    = modalMovie.genre || '';
+    document.getElementById('mYear').textContent     = modalMovie.year || '';
+    document.getElementById('mRating').textContent   = `★ ${modalMovie.rating || ''}`;
+    document.getElementById('mCast').textContent     = `Cast: ${modalMovie.cast || ''}`;
+    const subBtn = document.getElementById('modalSubBtn');
+    const isSub  = mySubscriptions.has(modalMovie.title_year);
+    subBtn.textContent = isSub ? '✓ Already Subscribed — Click to Remove' : '+ Subscribe';
+    subBtn.className   = isSub ? 'modal-sub-btn subscribed' : 'modal-sub-btn';
+    document.getElementById('modalOverlay').classList.add('open');
+  }
+
+  document.getElementById('modalSubBtn').addEventListener('click', () => {
+    if (!modalMovie) return;
+    const ty = modalMovie.title_year;
+    if (mySubscriptions.has(ty)) {
+      removeSubscription(encodeURIComponent(ty));
+    } else {
+      addSubscription(modalMovie);
+    }
+    document.getElementById('modalOverlay').classList.remove('open');
+  });
+
+  document.getElementById('modalClose').addEventListener('click', () =>
+    document.getElementById('modalOverlay').classList.remove('open'));
+  document.getElementById('modalOverlay').addEventListener('click', e => {
+    if (e.target === document.getElementById('modalOverlay'))
+      document.getElementById('modalOverlay').classList.remove('open');
+  });
+
+  // ── QUERY ─────────────────────────────────────────────────────
+  document.getElementById('btnQuery').addEventListener('click', queryMovies);
+  ['qTitle','qDirector','qGenre','qYear','qRating'].forEach(id => {
+    document.getElementById(id).addEventListener('keydown', e => {
+      if (e.key === 'Enter') queryMovies();
+    });
+  });
+  document.getElementById('btnClearQuery').addEventListener('click', () => {
+    ['qTitle','qDirector','qGenre','qYear','qRating'].forEach(id =>
+      document.getElementById(id).value = '');
+    document.querySelectorAll('.genre-btn').forEach(b => b.classList.remove('active'));
+    document.querySelector('.genre-btn[data-genre=""]').classList.add('active');
+    loadAll();
+  });
+
+  // ── EMAIL SUBSCRIBE BAND ──────────────────────────────────────
+  document.getElementById('subBtn').addEventListener('click', async () => {
+    const email = document.getElementById('subEmail').value.trim();
+    const msg   = document.getElementById('subMsg');
+    if (!email) return;
+    try {
+      const res  = await fetch(`${API()}/subscribe`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email }),
+      });
+      const data = await res.json();
+      msg.textContent = res.ok ? '✓ Subscribed!' : (data.error || 'Failed.');
+    } catch { msg.textContent = 'Connection error.'; }
+  });
+
+  // ── INIT ──────────────────────────────────────────────────────
+  loadAll();
+  loadSubscriptions();
+</script>
+</body>
+</html>

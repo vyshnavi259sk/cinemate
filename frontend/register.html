@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CineMate — Create Account</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root { --ink: #0d0d0d; --cream: #f7f3ee; --gold: #c9a84c; --red: #b5291e; --mid: #6b6560; --border: rgba(0,0,0,0.12); }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--ink); display: flex; align-items: center; justify-content: center; min-height: 100vh; padding: 2rem; }
+    .card { background: #fff; border: 1px solid var(--border); border-radius: 8px; padding: 3rem; width: 100%; max-width: 420px; box-shadow: 0 4px 32px rgba(0,0,0,0.06); }
+    .logo { font-family: 'Playfair Display', serif; font-size: 1.4rem; font-weight: 900; margin-bottom: 2rem; }
+    .logo span { color: var(--gold); }
+    .backend-sel { margin-bottom: 1.5rem; }
+    .backend-sel label { display: block; font-size: 0.7rem; font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.4rem; }
+    .backend-sel select { width: 100%; padding: 0.6rem 0.9rem; border: 1.5px solid var(--border); border-radius: 4px; background: #fff; font-family: 'DM Sans', sans-serif; font-size: 0.85rem; color: var(--ink); outline: none; cursor: pointer; }
+    h2 { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 700; margin-bottom: 0.4rem; }
+    .sub { font-size: 0.85rem; color: var(--mid); margin-bottom: 2rem; }
+    .field { margin-bottom: 1rem; }
+    .field label { display: block; font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: var(--mid); margin-bottom: 0.4rem; }
+    .field input { width: 100%; padding: 0.75rem 0.9rem; border: 1.5px solid var(--border); border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.95rem; color: var(--ink); outline: none; transition: border-color 0.2s; }
+    .field input:focus { border-color: var(--gold); }
+    .btn-primary { width: 100%; padding: 0.9rem; background: var(--ink); color: var(--cream); border: none; border-radius: 4px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; font-weight: 500; letter-spacing: 0.06em; text-transform: uppercase; cursor: pointer; margin-top: 0.5rem; transition: background 0.2s; }
+    .btn-primary:hover { background: #222; }
+    .msg { margin-top: 0.8rem; padding: 0.7rem 0.9rem; border-radius: 4px; font-size: 0.85rem; display: none; }
+    .msg.error { background: #fdf0ef; color: var(--red); border: 1px solid #f5c6c3; display: block; }
+    .msg.success { background: #f0fdf4; color: #166534; border: 1px solid #bbf7d0; display: block; }
+    .footer-link { margin-top: 1.5rem; font-size: 0.82rem; color: var(--mid); text-align: center; }
+    .footer-link a { color: var(--ink); font-weight: 500; text-decoration: none; }
+    .footer-link a:hover { text-decoration: underline; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="logo">Cine<span>Mate</span></div>
+    <div class="backend-sel">
+      <label>Backend Architecture</label>
+      <select id="backendSelect">
+        <option value="http://100.56.165.174">Architecture 1 — EC2 (Flask)</option>
+        <option value="http://18.208.221.66">Architecture 2 — ECS Fargate</option>
+        <option value="https://ish4adz2di.execute-api.us-east-1.amazonaws.com/prod">Architecture 3 — Lambda + API Gateway</option>
+      </select>
+    </div>
+    <h2>Create Account</h2>
+    <p class="sub">Join to browse, discover, and track your films.</p>
+    <form id="regForm">
+      <div class="field"><label>Username</label><input type="text" id="username" placeholder="yourname" required/></div>
+      <div class="field"><label>Email address</label><input type="email" id="email" placeholder="you@example.com" required/></div>
+      <div class="field"><label>Password</label><input type="password" id="password" placeholder="At least 6 characters" required/></div>
+      <button type="submit" class="btn-primary">Create Account</button>
+      <div class="msg" id="msg"></div>
+    </form>
+    <p class="footer-link">Already have an account? <a href="index.html">Sign in</a></p>
+  </div>
+  <script>
+    const sel = document.getElementById('backendSelect');
+    const saved = localStorage.getItem('cinemate_backend');
+    if (saved) sel.value = saved;
+    sel.addEventListener('change', () => localStorage.setItem('cinemate_backend', sel.value));
+
+    document.getElementById('regForm').addEventListener('submit', async e => {
+      e.preventDefault();
+      const msg      = document.getElementById('msg');
+      const email    = document.getElementById('email').value.trim();
+      const username = document.getElementById('username').value.trim();
+      const password = document.getElementById('password').value;
+      const api      = sel.value;
+      localStorage.setItem('cinemate_backend', api);
+
+      if (password.length < 6) {
+        msg.className = 'msg error';
+        msg.textContent = 'Password must be at least 6 characters.';
+        return;
+      }
+      try {
+        const res  = await fetch(`${api}/register`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, username, password })
+        });
+        const data = await res.json();
+        if (res.ok) {
+          msg.className = 'msg success';
+          msg.textContent = 'Account created! Redirecting to sign in…';
+          setTimeout(() => window.location.href = 'index.html', 1200);
+        } else {
+          msg.className = 'msg error';
+          msg.textContent = data.error || 'Registration failed.';
+        }
+      } catch {
+        msg.className = 'msg error';
+        msg.textContent = 'Could not connect to server.';
+      }
+    });
+  </script>
+</body>
+</html>
