@@ -160,6 +160,7 @@ docker push <account>.dkr.ecr.us-east-1.amazonaws.com/cinemate-backend:latest
 - ECS public IP changes on each task restart / lab session
 - Lambda API Gateway URL is permanent
 - AWS Academy LabRole credentials expire every few hours — refresh from AWS Details
+- Backend Validation: Use F12 -> Network to monitor outgoing requests. Upon changing the backend selector, the IP address associated with site requests will update dynamically to match the chosen environment.
 
 ---
 
