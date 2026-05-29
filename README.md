@@ -50,11 +50,11 @@ cinemate/
 │   ├── requirements.txt
 │   └── Dockerfile               — For ECS Fargate deployment
 ├── lambda/
-│   ├── list_movies.py           — GET /movies
-│   ├── search_movies.py         — GET /search
-│   ├── get_by_genre.py          — GET /genre/{genre}
-│   ├── login.py                 — POST /login, POST /register
-│   └── subscribe.py             — GET/POST /subscribe, DELETE /subscription
+│   ├── cinemate-movies.py           — GET /movies
+│   ├── cinemate-search.py         — GET /search
+│   ├── cinemate-genre.py          — GET /genre/{genre}
+│   ├── cinemate-login.py                 — POST /login, POST /register
+│   └── cinemate-subscribe.py             — GET/POST /subscribe, DELETE /subscription
 └── frontend/
     ├── index.html               — Login page
     ├── register.html            — Registration page
