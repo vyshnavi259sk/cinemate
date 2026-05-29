@@ -9,32 +9,7 @@ A full-stack movie catalogue web application built on AWS cloud services.
 
 ## Architecture
 
-```
-Browser
-    │
-    ├── EC2 + Flask (port 80, systemd)   — Architecture 1
-    ├── ECS Fargate (Docker container)   — Architecture 2
-    └── API Gateway + Lambda             — Architecture 3
-              ├── GET  /movies           → cinemate-movies
-              ├── GET  /search           → cinemate-search
-              ├── GET  /genre/{genre}    → cinemate-genre
-              ├── GET  /subscriptions    → cinemate-subscribe
-              ├── POST /subscribe        → cinemate-subscribe
-              ├── DELETE /subscription   → cinemate-subscribe
-              ├── POST /login            → cinemate-login
-              └── POST /register        → cinemate-login
-                        │
-                        ▼
-               DynamoDB tables:
-                 cinemate-movies        (PK: director, SK: title#year)
-                 cinemate-login         (PK: email)
-                 cinemate-subscriptions (PK: email, SK: title_year)
-               S3:
-                 cinemate-posters-bucket  (poster images)
-                 cinemate-frontend-bucket (static website)
-```
-
----
+Will be updated soon
 
 ## DynamoDB Key Design
 
@@ -55,8 +30,7 @@ Browser
 
 ## Dataset
 
-98 curated classic and contemporary films spanning 13 genres from 1927 to 2024.
-All metadata is original/hand-curated for this project. No third-party dataset used.
+Claude generated the dataset as a JSON file directly from its training knowledge of well-known films, rather than from a downloadable third-party dataset file.
 
 ---
 
