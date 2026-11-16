@@ -203,10 +203,14 @@
   const COLORS = ['#1a1a2e','#16213e','#1a0a0a','#0a1a0a','#1a1510','#0f0f1a','#1a0f0a','#0a0f1a','#1a1a0a','#0f1a1a','#1a0a1a','#0a1a1a'];
 
   // Auth
-  const userEmail = sessionStorage.getItem('cinemate_user');
-  const username  = sessionStorage.getItem('cinemate_username');
-  if (!userEmail) window.location.href = 'index.html';
+  const userEmail  = sessionStorage.getItem('cinemate_user');
+  const username   = sessionStorage.getItem('cinemate_username');
+  const userToken  = sessionStorage.getItem('cinemate_token');
+  if (!userEmail || !userToken) { sessionStorage.clear(); window.location.href = 'index.html'; }
   document.getElementById('navUsername').textContent = username || userEmail;
+  function authHeaders(extra = {}) {
+    return { ...extra, 'Authorization': `Bearer ${userToken}` };
+  }
 
   // Backend
   const backendSelect = document.getElementById('backendSelect');
@@ -230,7 +234,9 @@
 
   async function loadSubscriptions() {
     try {
-      const res  = await fetch(`${API()}/subscriptions?email=${encodeURIComponent(userEmail)}`);
+      const res  = await fetch(`${API()}/subscriptions?email=${encodeURIComponent(userEmail)}`, {
+        headers: authHeaders()
+      });
       const data = await res.json();
       const list = data.subscriptions || [];
       mySubscriptions = new Set(list.map(s => s.title_year));
@@ -261,7 +267,7 @@
     try {
       const res = await fetch(`${API()}/subscribe`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({
           email:      userEmail,
           title_year: movie.title_year,
@@ -285,7 +291,7 @@
     try {
       const res = await fetch(`${API()}/subscription`, {
         method: 'DELETE',
-        headers: { 'Content-Type': 'application/json' },
+        headers: authHeaders({ 'Content-Type': 'application/json' }),
         body: JSON.stringify({ email: userEmail, title_year })
       });
       if (res.ok) {

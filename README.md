@@ -75,6 +75,28 @@ cinemate/
 
 ---
 
+## Auth
+
+- Passwords are hashed with PBKDF2-HMAC-SHA256 (100k iterations, random
+  per-user salt) before being written to `cinemate-login` — never stored or
+  compared in plain text.
+- Login/register return a signed session token (`email` + HMAC-SHA256
+  signature, stdlib `hmac`/`hashlib` only — no extra dependency). The
+  frontend stores it in `sessionStorage` and sends it as
+  `Authorization: Bearer <token>` on every `/subscribe`, `/subscription`,
+  and `/subscriptions` request; the backend rejects the request unless the
+  token's email matches the email in the request, so one user can no longer
+  read or edit another user's subscriptions just by knowing their email.
+- Every backend that issues or checks tokens needs the **same** secret in
+  `CINEMATE_SECRET_KEY` (an env var on the EC2 instance / ECS task / each
+  Lambda function). It falls back to an insecure dev value if unset so the
+  demo still runs locally — set a real one for anything beyond localhost.
+- Existing rows written before this change have plaintext passwords and
+  won't verify against the new hashing — re-register any demo accounts
+  after deploying this update.
+
+---
+
 ## Deployment
 
 ### Prerequisites
@@ -105,6 +127,7 @@ User=root
 WorkingDirectory=/home/ec2-user
 ExecStart=/home/ec2-user/.local/bin/gunicorn --bind 0.0.0.0:80 --workers 2 app:app
 Restart=always
+Environment=CINEMATE_SECRET_KEY=<same-random-secret-as-the-other-architectures>
 [Install]
 WantedBy=multi-user.target
 EOF2
@@ -121,16 +144,20 @@ docker tag cinemate-backend:latest <account>.dkr.ecr.us-east-1.amazonaws.com/cin
 docker push <account>.dkr.ecr.us-east-1.amazonaws.com/cinemate-backend:latest
 # Create ECS cluster + task definition + service via AWS Console
 # Task role: LabRole, Execution role: LabRole, Port: 80, Public IP: enabled
+# Task definition env vars: CINEMATE_SECRET_KEY=<same-random-secret-as-the-other-architectures>
 ```
 
 ### Step 4 — Lambda + API Gateway
 1. Create 5 Lambda functions (Python 3.12, LabRole):
    - `cinemate-movies`, `cinemate-search`, `cinemate-genre`, `cinemate-login`, `cinemate-subscribe`
 2. Set handler to `lambda_function.handler` for each
-3. Create REST API in API Gateway with routes listed in Architecture section
-4. Enable Lambda proxy integration on all routes
-5. Enable CORS on all resources
-6. Deploy to `prod` stage
+3. On `cinemate-login` and `cinemate-subscribe`, set the environment variable
+   `CINEMATE_SECRET_KEY` to the **same** random value used for EC2/ECS —
+   a token issued by one backend must verify on the others
+4. Create REST API in API Gateway with routes listed in Architecture section
+5. Enable Lambda proxy integration on all routes
+6. Enable CORS on all resources, allowing the `Authorization` header
+7. Deploy to `prod` stage
 
 ### Step 5 — Frontend
 1. Create S3 bucket with static website hosting enabled

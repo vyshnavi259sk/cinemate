@@ -96,6 +96,7 @@
         if (res.ok) {
           sessionStorage.setItem('cinemate_user', data.email);
           sessionStorage.setItem('cinemate_username', data.username);
+          sessionStorage.setItem('cinemate_token', data.token || '');
           msg.className = 'msg success';
           msg.textContent = `Welcome back, ${data.username}! Redirecting…`;
           setTimeout(() => window.location.href = 'main.html', 800);
